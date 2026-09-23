@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<!-- title, og:title e og:description sotto sono testo statico: non si
+     aggiornano da soli quando cambia config.js, vanno editate qui a mano -->
+<title>Gavino — Allenamenti minibasket</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23C9962E'/%3E%3Cpath d='M32 3v58M3 32h58M10 12q22 20 0 40M54 12q-22 20 0 40' stroke='%23142B21' stroke-width='2.6' fill='none'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="icon.png">
+<meta name="theme-color" content="#0F1D17">
+<meta property="og:title" content="Gavino — Allenamenti minibasket">
+<meta property="og:description" content="Generatore di allenamenti minibasket, bilanciati su palleggio, tiro, passaggio, coordinazione, difesa e gioco di squadra.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:type" content="website">
+<script src="config.js"></script>
+<script src="lavagna-tattica.js"></script>
+<script src="sorteggio-squadre.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="currentColor" style="fill:var(--cream-200);"></path>
+    </marker>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand-badge">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" fill="var(--navy-900)"></circle>
+        <path d="M12 2v20M2 12h20M4.5 5.2q6 6.8 0 13.6M19.5 5.2q-6 6.8 0 13.6" stroke="var(--orange-300)" stroke-width="1.4" fill="none"></path>
+      </svg>
+    </div>
+    <div class="titles">
+      <div class="greeting" id="greeting">Ciao</div>
+      <h1 id="appTitolo">MiniBasket Planner</h1>
+      <p id="appTagline">Età, obiettivo, tempo e materiali. Allenamento a portata di telefono.</p>
+      <div class="fip-badge" id="sportBadge">Esercizi in stile FIP</div>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="btnFeedback" type="button">Feedback coach</button>
+      <button class="icon-btn" id="btnCronologia" type="button">Cronologia</button>
+      <button class="icon-btn" id="btnReport" type="button">Report statistiche</button>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <div class="panel-form">
+
+      <div class="field">
+        <span class="field-label">Fascia d'età</span>
+        <div class="chip-row" id="fasciaRow"></div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Obiettivo (scegli uno o più, opzionale)</span>
+        <div class="chip-row" id="obiettiviRow"></div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Tempo a disposizione</span>
+        <div class="time-row">
+          <button class="time-btn" id="timeMinus" type="button" aria-label="Riduci tempo">–</button>
+          <div class="time-value" id="timeValue">60<span>minuti</span></div>
+          <button class="time-btn" id="timePlus" type="button" aria-label="Aumenta tempo">+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Materiali disponibili</span>
+        <div class="chip-row" id="materialiRow"></div>
+      </div>
+
+      <button class="btn-generate" id="btnGenera" type="button">Genera l'allenamento</button>
+      <p class="feedback-hint">Dopo aver generato l'allenamento potrai rivedere gli esercizi (cambiarli o rimuoverli) e salvarlo in cronologia dal pulsante in fondo alla pagina. Per presenze e appunti dell'allenamento usa invece "Feedback coach" in alto: compilalo prima (per pianificare) o dopo l'allenamento (per registrare chi è venuto davvero) — genera un PDF a parte.</p>
+    </div>
+
+    <div class="panel-results" id="panelResults">
+      <div class="empty-state" id="emptyState">
+        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M20 3 V37 M3 20 H37 M7 8 Q20 20 7 32 M33 8 Q20 20 33 32" stroke="currentColor" stroke-width="1.4" fill="none"></path></svg>
+        <p>Imposta i filtri qui accanto e premi "Genera l'allenamento" per creare il programma con gli esercizi.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="credits" id="footerCredits">Fatto su misura — nessun dato lascia questo file.</footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
