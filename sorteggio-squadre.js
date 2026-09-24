@@ -211,7 +211,7 @@
      MUSICA RUOTA — parte in loop quando si apre "Ruota delle
      sfide", si ferma quando si cambia tab o si chiude il modale.
      --------------------------------------------------------- */
-  var MUSICA_SRC = 'Strength_of_a_Thousand_Men_-_Two_Steps_from_Hell.mp3';
+  var MUSICA_SRC = 'San_Marco.mp3';
   var audioRuota = null;
   var musicaMutata = caricaPreferenzaMuta();
 
