@@ -257,9 +257,9 @@ const state = {
 
 /* ============ STORICO SEDUTE (salvato solo in locale, nel browser) ============ */
 
-var STORICO_KEY = 'gavinoMiniBasketStorico';
-var FEEDBACK_KEY = 'gavinoMiniBasketFeedback';
-var ROSTER_KEY = 'gavinoMiniBasketRoster';
+var STORICO_KEY = CONFIG.app.storageId + 'MiniBasketStorico';
+var FEEDBACK_KEY = CONFIG.app.storageId + 'MiniBasketFeedback';
+var ROSTER_KEY = CONFIG.app.storageId + 'MiniBasketRoster';
 
 function caricaStorico(){
   try{
@@ -304,28 +304,7 @@ function eliminaVoceStorico(idx){
 
 /* ---- Elenco iscritti (per le presenze) ---- */
 
-var DEFAULT_ROSTER = [
-  {nome:'Francesco M.', gruppo:'aquilotti'},
-  {nome:'Leonardo S.', gruppo:'aquilotti'},
-  {nome:'Carlo C.', gruppo:'aquilotti'},
-  {nome:'Paolo Z.', gruppo:'aquilotti'},
-  {nome:'Alessandro R.', gruppo:'aquilotti'},
-  {nome:'Giuseppe C.', gruppo:'aquilotti'},
-  {nome:'Giuseppe B.', gruppo:'aquilotti'},
-  {nome:'Federico M.', gruppo:'aquilotti'},
-  {nome:'Riccardo M.', gruppo:'aquilotti'},
-  {nome:'Andrea M.', gruppo:'aquilotti'},
-  {nome:'Anna C.', gruppo:'aquilotti'},
-  {nome:'Riccardo T.', gruppo:'aquilotti'},
-  {nome:'Francesco T.', gruppo:'aquilotti'},
-  {nome:'Raffaele C.', gruppo:'aquilotti'},
-  {nome:'Alessandro P.', gruppo:'aquilotti'},
-  {nome:'Federico S.', gruppo:'aquilotti'},
-  {nome:'Marco', gruppo:'pulcini'},
-  {nome:'Giovanni', gruppo:'pulcini'},
-  {nome:'Luca', gruppo:'pulcini'},
-  {nome:'Alberto', gruppo:'pulcini'}
-];
+var DEFAULT_ROSTER = CONFIG.roster.iniziale;
 
 function normalizzaRoster(arr){
   return arr.map(function(voce){

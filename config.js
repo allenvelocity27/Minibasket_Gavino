@@ -35,6 +35,21 @@ const CONFIG = {
     // così per una nuova versione basta cambiare quel singolo campo
     footerCreditsSuffix: 'nessun dato lascia questo file.', // → "Fatto su misura per {coach} — {suffix}"
     pdfFooterPrefix: 'Generata con il tool personale di',   // → "{prefix} {coach}"
+    // prefisso usato per le chiavi di localStorage (cronologia, feedback,
+    // roster, sorteggio). Deve essere diverso per ogni coach: se più
+    // versioni sono ospitate sotto lo stesso dominio (es. github.io),
+    // stessa origine = stesso localStorage, e i dati si mescolerebbero.
+    storageId: 'gavino',
+  },
+
+  /* ---------- ROSTER INIZIALE (elenco ragazzi) ----------
+     Vuoto di proposito: i nomi dei ragazzi sono dati sensibili (minori)
+     e non vanno messi qui né in nessun file caricato su un repository
+     pubblico. Il coach li aggiunge dall'app stessa (pannello "Feedback
+     coach" o "Sorteggio squadre"): da quel momento restano salvati solo
+     nel localStorage del suo browser, mai in un file. */
+  roster: {
+    iniziale: [],
   },
 
   /* ---------- COLORI (rispecchia le custom properties di style.css) ---------- */
